@@ -1,3 +1,9 @@
+### My Learning Notes
+--- 
+https://cautious-cardigan-975.notion.site/lab01-Calling-Building-and-Securing-APIs-3405001bbc11800581d9cd9ed6f201fc?source=copy_link 
+
+
+
 # Lab 1: Calling, Building, and Securing APIs
 In homework I1 you will use third-party LLM APIs, and in the group project you will develop your own APIs. In this lab you will experiment with both: connecting to an LLM of your choice, and providing your own API endpoint. 
 
