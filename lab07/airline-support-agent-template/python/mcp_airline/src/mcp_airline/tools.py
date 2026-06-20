@@ -17,7 +17,7 @@ When you add new behaviour, prefer creating small helper functions (similar to
 from __future__ import annotations
 
 import json
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Annotated, List
 from typing import Any
 
@@ -70,6 +70,27 @@ def _search_direct_flight(
         )
 
     return results
+
+def _fetch_airport_summary(airport_name: str) -> str:
+    """Internal helper to fetch an airport summary from Wikipedia.
+
+    Handles URL construction, the HTTP request, and error handling.
+    Returns a plain-text summary string.
+    """
+    import httpx
+
+    url = (
+        "https://en.wikipedia.org/api/rest_v1/page/summary/"
+        + airport_name.replace(" ", "_")
+    )
+    headers = {
+        "User-Agent": "MLIP-Lab7-AirlineAgent/1.0 (educational project)"
+    }
+
+    resp = httpx.get(url, headers=headers, timeout=10.0, follow_redirects=True)
+    resp.raise_for_status()
+    data = resp.json()
+    return data.get("extract", "No information found for that airport.")
 
 
 def _payment_for_update(
@@ -583,6 +604,33 @@ def register_tools(mcp: FastMCP, db: AirlineDatabase) -> None:
             {"iata": "LGA", "city": "LaGuardia"},
         ]
         return json.dumps(airports, indent=2)
+    
+    @mcp.tool()
+    def airport_info(
+        airport_name: Annotated[
+            str, "The name of the airport, such as 'San Francisco International Airport' or 'John F. Kennedy International Airport'''"
+        ],
+    )->str:
+        """Retrieve basic information about an airport from Wikipedia,
+        including city, country, and a short description. Use this when
+        a user asks about an airport that isn't in the flight database."""
+    
+        try:
+            return _fetch_airport_summary(airport_name)
+        except Exception as exc:  # noqa: BLE001
+            return f"Error fetching airport info: {exc}"
+        
+
+        
+    @mcp.tool()
+    def current_time() -> str:
+        """Get the REAL current UTC date and time. You do NOT know the
+        current date on your own — your training data is outdated. ALWAYS
+        call this tool before answering any question involving 'today',
+        'tomorrow', 'now', or relative dates, or before booking any flight."""
+
+        now = datetime.now(timezone.utc)
+        return now.strftime("%Y-%m-%d %H:%M:%S UTC")
 
     @mcp.tool()
     def calculate(

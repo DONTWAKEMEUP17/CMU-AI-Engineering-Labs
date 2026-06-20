@@ -8,6 +8,9 @@ via LiteLLM, which provides a unified interface.
 
 from litellm import completion
 from .rate_limiter import RateLimiter
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env file, including API keys
 
 #################################
 # Model Configuration
