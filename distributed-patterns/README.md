@@ -20,10 +20,10 @@
 | -- | --------------------- | ------------------------------------------------------------ | ---- |
 | [00](./00-overview.md) | Overview              | 为什么"都叫分布式"但每家不同 + 本系列的 5 个对比维度        | done |
 | [01](./01-kafka-pub-sub.md) | Kafka                 | Pub/sub + append-only log + partition/replication：用解耦换工程极简 | done |
-| [02](./02-resilientdb-bft.md) | ResilientDB / BFT     | 不信任的节点之间怎么达成共识：从 PBFT 到 HotStuff           | TODO |
-| [03](./03-redis-master-slave.md) | Redis 主从            | 单线程事件循环 + 异步复制：读扩展的极致代价                  | TODO |
-| [04](./04-mysql-replication.md) | MySQL 复制            | binlog 流复制 + GTID：从 row-based 到 statement-based 的选择题 | TODO |
-| [05](./05-comparison-matrix.md) | 横向对比              | 一致性 / 可用性 / 吞吐 / 容错 / 业务场景：一张表收口         | TODO |
+| [02](./02-resilientdb-bft.md) | ResilientDB / BFT     | CFT vs BFT：当"同事可能撒谎"时，共识怎么达成               | done |
+| [03](./03-redis-master-slave.md) | Redis 主从            | 异步复制 + 哨兵 + Cluster：性能层的 HA 与读扩展              | done |
+| [04](./04-mysql-replication.md) | MySQL 复制            | binlog → CDC → Kafka：trust source 的复制哲学               | done |
+| [05](./05-comparison-matrix.md) | 横向对比 + 选型决策树  | 一张表收口：哪个系统解决哪个问题，为什么不能互相替代          | done |
 
 ## 怎么读
 
