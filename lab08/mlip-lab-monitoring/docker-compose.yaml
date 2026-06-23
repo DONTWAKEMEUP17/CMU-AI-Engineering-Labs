@@ -16,6 +16,14 @@ services:
   node-exporter:
     image: quay.io/prometheus/node-exporter:latest
     container_name: nodeexporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--path.rootfs=/rootfs'
     ports:
       - 9100:9100
     expose:
