@@ -3,6 +3,6 @@ preprocess:
   random_state: 42
 
 train:
-  n_estimators: 200
-  max_depth: 10
+  n_estimators: 201
+  max_depth: 11
   random_state: 42

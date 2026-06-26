@@ -39,14 +39,14 @@ stages:
     params:
       params.yaml:
         train:
-          n_estimators: 200
-          max_depth: 10
+          n_estimators: 201
+          max_depth: 11
           random_state: 42
     outs:
     - path: models/classifier.pkl
       hash: md5
-      md5: a62d9fc2f35f4b36f26e3b5370fbf1e0
-      size: 710765
+      md5: ea499c1ffa5496a700a882326ffeac1f
+      size: 714510
   evaluate:
     cmd: python3 scripts/evaluate.py
     deps:
@@ -56,8 +56,8 @@ stages:
       size: 27626
     - path: models/classifier.pkl
       hash: md5
-      md5: a62d9fc2f35f4b36f26e3b5370fbf1e0
-      size: 710765
+      md5: ea499c1ffa5496a700a882326ffeac1f
+      size: 714510
     - path: scripts/evaluate.py
       hash: md5
       md5: 61c2161c5c0a6b53183444c9d051f54a
