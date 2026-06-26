@@ -1,0 +1,8 @@
+alibi==0.9.5
+alibi[tensorflow]
+numpy==1.23.5
+pandas==1.5.3
+scikit-image==0.22.0
+scikit-learn==1.2.2
+tensorflow<2.15.0
+shap==0.44.1
