@@ -10,3 +10,4 @@ venv/
 
 # Runtime logs
 *.log
+.roar/
