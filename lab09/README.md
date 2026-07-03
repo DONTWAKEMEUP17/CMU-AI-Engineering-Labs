@@ -152,7 +152,7 @@ Fill in the following table based on your experience (replace the blanks):
 
 | | DVC | Roar |
 |---|---|---|
-| **Philosophy** | ____________ | ____________ |
+| **Philosophy** | declarative | observational |
 | **Config required** | ____________ | ____________ |
 | **How is the DAG defined?** | ____________ | ____________ |
 | **What happens on re-run?** | ____________ | ____________ |
